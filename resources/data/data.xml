@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<data>
+    <topic name="Blommor">
+        <item name="Blåklint">
+            <Beskrivning type="text">En blå blomma.</Beskrivning>
+            <stats>
+                <asked>0</asked>
+                <correct>0</correct>
+            </stats>
+        </item>
+        <item name="Gulklint">
+            <Beskrivning type="text">En gul blomma.</Beskrivning>
+            <stats>
+                <asked>0</asked>
+                <correct>0</correct>
+            </stats>
+        </item>
+    </topic>
+    <topic name="Kungar">
+        <item name="Gustav Vasa">
+            <Period type="text">1523–1560.</Period>
+            <stats>
+                <asked>0</asked>
+                <correct>0</correct>
+            </stats>
+        </item>
+        <item name="Gustav II Adolf">
+            <Period type="text">1611–1632.</Period>
+            <stats>
+                <asked>0</asked>
+                <correct>0</correct>
+            </stats>
+        </item>
+    </topic>
+</data>
