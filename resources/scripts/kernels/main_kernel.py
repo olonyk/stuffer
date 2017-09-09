@@ -27,7 +27,7 @@ class MainKernel():
                     command_2=lambda: self.toggle(gui.toggle_2, gui.values_given),
                     command_3=lambda: self.toggle(gui.toggle_3, gui.values_topics),
                     value_1=gui.toggle_1, value_2=gui.toggle_2, value_3=gui.toggle_3,
-                    bkg="white").grid(row=0, sticky=W+N+E+S)
+                    bkg=None).grid(row=0, sticky=W+N+E+S)
         row_count = 1
         for topic in attrib.keys():
             topic_value = IntVar()
@@ -35,7 +35,7 @@ class MainKernel():
             topic_check = TopicWidget(gui.frame_topics,
                                       text=topic,
                                       value_topic=topic_value,
-                                      command=self.check_topic_command, bkg="white")
+                                      command=self.not_implemented_yet, bkg=None)
             topic_check.grid(row=row_count,
                              sticky=W+N+E+S)
             gui.checkb_topics.append(topic_check)
@@ -48,7 +48,7 @@ class MainKernel():
                 given_value = IntVar()
                 given_value.set(1)
 
-                attr_check = TopicWidget(gui.frame_topics, text=val, value_ask=ask_value, value_given=given_value, bkg="white")
+                attr_check = TopicWidget(gui.frame_topics, text=val, value_ask=ask_value, value_given=given_value, bkg=None)
                 attr_check.grid(row=row_count, sticky=W+N+E+S)
 
                 gui.checkb_ask.append(attr_check)
@@ -57,12 +57,15 @@ class MainKernel():
                 gui.values_given.append(given_value)
                 row_count += 1
 
-    def check_topic_command(self):
-        self.populate_attrib()
-    
+    def not_implemented_yet(self):
+        print("Function not implemented yet")
+
     def check_attr_command(self):
         print("check_attr_command")
     
     def toggle(self, value, values):
         for val in values:
             val.set(bool(value.get()))
+
+    def launch_quiz(self):
+        print("Function not implemented yet")
