@@ -5,6 +5,7 @@ from tkinter.ttk import Checkbutton, Label, Separator
 from ..guis.main_gui import MainGUI
 from ..support.data_handler import DataHandler
 from ..support.topic_widget import TopicWidget
+from ..support.quiz import Quiz
 
 
 class MainKernel():
@@ -36,12 +37,13 @@ class MainKernel():
                                       text=topic,
                                       value_topic=topic_value,
                                       command=self.not_implemented_yet, bkg=None)
-            topic_check.grid(row=row_count,
-                             sticky=W+N+E+S)
+            topic_check.grid(row=row_count, sticky=W+N+E+S)
             gui.checkb_topics.append(topic_check)
             gui.values_topics.append(topic_value)
             gui.name_topics.append(topic)
+
             row_count += 1
+            topic_settings = {}
             for val in attrib[topic]:
                 # Ask window
                 ask_value = IntVar()
@@ -53,10 +55,11 @@ class MainKernel():
                 attr_check.grid(row=row_count, sticky=W+N+E+S)
                 gui.name_subtop.append(val)
                 gui.checkb_ask.append(attr_check)
-                gui.values_ask.append(ask_value)
-                gui.values_given.append(given_value)
                 row_count += 1
-
+                # New
+                topic_settings[val] = {"ask": ask_value, "given": given_value}
+            gui.topic_dict[topic] = topic_settings
+            
     def not_implemented_yet(self):
         print("Function not implemented yet")
 
@@ -68,5 +71,4 @@ class MainKernel():
             val.set(bool(value.get()))
 
     def launch_quiz(self):
-        print("Function not implemented yet")
-        quiz = Quiz(data_handler=self.data_handler, topic=(self.main_app.name_topics, self.main_app.values_topics))
+        quiz = Quiz(data_handler=self.data_handler, topic_dict=self.main_app.topic_dict.copy())

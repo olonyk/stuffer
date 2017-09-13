@@ -10,6 +10,7 @@ class MainGUI(Frame):
         self.kernel = kernel
 
         # Create the list of checkboxes and their values
+        self.topic_dict = {}
         self.checkb_topics = []
         self.checkb_ask = []
         self.checkb_given = []
@@ -71,9 +72,14 @@ class MainGUI(Frame):
         Label(frame_control, text="Quiz settings").grid(row=0, column=0)
         Label(frame_control, text="Number of questions:").grid(row=1, column=0, sticky=W+N)
         Label(frame_control, text="Save statistics:").grid(row=2, column=0, sticky=W+N)
-        self.spin_nrq = Spinbox(frame_control, from_=1, to=500, width=3)
-        self.spin_nrq.grid(row=1, column=1, sticky=E)
-        Checkbutton(frame_control, text="", command=self.kernel.not_implemented_yet).grid(row=2, column=1, sticky=E)
+        nrq_var = StringVar()
+        nrq_var.set("10")
+        Spinbox(frame_control, from_=1, to=500, width=3, textvariable=nrq_var).grid(row=1, column=1, sticky=E)
+        save_stats = IntVar()
+        save_stats.set(1)
+        self.topic_dict["save_stats"] = save_stats
+        self.topic_dict["number_of_questions"] = nrq_var
+        Checkbutton(frame_control, text="", variable=save_stats).grid(row=2, column=1, sticky=E)
         Button(frame_control, text="Start quiz", command=self.kernel.launch_quiz).grid(row=10, column=1, sticky=S+E)
         return frame_control
 
