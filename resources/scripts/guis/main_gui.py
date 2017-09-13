@@ -16,6 +16,8 @@ class MainGUI(Frame):
         self.values_topics = []
         self.values_ask = []
         self.values_given = []
+        self.name_topics = []
+        self.name_subtop = []
 
         self.toggle_1 = IntVar()
         self.toggle_2 = IntVar()
@@ -69,7 +71,7 @@ class MainGUI(Frame):
         Label(frame_control, text="Quiz settings").grid(row=0, column=0)
         Label(frame_control, text="Number of questions:").grid(row=1, column=0, sticky=W+N)
         Label(frame_control, text="Save statistics:").grid(row=2, column=0, sticky=W+N)
-        self.spin_nrq = Spinbox(frame_control, from_=1, to=500)
+        self.spin_nrq = Spinbox(frame_control, from_=1, to=500, width=3)
         self.spin_nrq.grid(row=1, column=1, sticky=E)
         Checkbutton(frame_control, text="", command=self.kernel.not_implemented_yet).grid(row=2, column=1, sticky=E)
         Button(frame_control, text="Start quiz", command=self.kernel.launch_quiz).grid(row=10, column=1, sticky=S+E)

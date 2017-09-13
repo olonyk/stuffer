@@ -40,6 +40,7 @@ class MainKernel():
                              sticky=W+N+E+S)
             gui.checkb_topics.append(topic_check)
             gui.values_topics.append(topic_value)
+            gui.name_topics.append(topic)
             row_count += 1
             for val in attrib[topic]:
                 # Ask window
@@ -50,9 +51,8 @@ class MainKernel():
 
                 attr_check = TopicWidget(gui.frame_topics, text=val, value_ask=ask_value, value_given=given_value, bkg=None)
                 attr_check.grid(row=row_count, sticky=W+N+E+S)
-
+                gui.name_subtop.append(val)
                 gui.checkb_ask.append(attr_check)
-
                 gui.values_ask.append(ask_value)
                 gui.values_given.append(given_value)
                 row_count += 1
@@ -69,3 +69,4 @@ class MainKernel():
 
     def launch_quiz(self):
         print("Function not implemented yet")
+        quiz = Quiz(data_handler=self.data_handler, topic=(self.main_app.name_topics, self.main_app.values_topics))
